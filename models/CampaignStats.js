@@ -39,10 +39,18 @@ const CampaignStatSchema = new mongoose.Schema({
         revenue_per_recipient: { type: Number, default: 0 },
     },
     campaign_name: { type: String },
-    included_audiences: [{ type: String }],
-    excluded_audiences: [{ type: String }],
-    included_audiences_names: [{ type: String }],
-    excluded_audiences_names: [{ type: String }],
+    included_audiences: [{
+        id: { type: String, required: true },
+        type: { type: String, enum: ['list', 'segment'], required: true },
+        name: { type: String, required: true },
+        _id: false
+    }],
+    excluded_audiences: [{
+        id: { type: String, required: true },
+        type: { type: String, enum: ['list', 'segment'], required: true },
+        name: { type: String, required: true },
+        _id: false
+    }],
     tagIds: [{ type: String }],
     tagNames: [{ type: String }],
     store_public_id: { type: String, required: true },

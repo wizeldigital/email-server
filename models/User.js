@@ -6,7 +6,8 @@ const UserSchema = new mongoose.Schema({
     stores: [{
         store_public_id: { type: String, required: true },
         store_id: { type: mongoose.Schema.Types.ObjectId, ref: "Store", required: true },
-        permissions: [{ type: String }]
+        permissions: [{ type: String }],
+        _id: false
     }]
 }, {
     timestamps: true
